@@ -187,7 +187,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\ReservationIntent.cs" />
+    <Compile Include="Handlers\WelcomeIntent.cs" />
     <Compile Include="Helpers\CommonModelMapper.cs" />
+    <Compile Include="Helpers\IntentRouter.cs" />
     <Compile Include="Helpers\MixedDateTimeConverter.cs" />
     <Compile Include="Models\Alexa\Request\Application.cs" />
     <Compile Include="Models\Alexa\Request\Context.cs" />
@@ -323,6 +326,7 @@
     <Compile Include="Models\Alexa\Response\Ssml\WordRole.cs" />
     <Compile Include="Models\Alexa\Response\StandardCard.cs" />
     <Compile Include="Models\Common\CommonModel.cs" />
+    <Compile Include="Models\IntentList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

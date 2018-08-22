@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using tesMexTacosbot.Helpers;
+using tesMexTacosbot.Models.Common;
 
 namespace tesMexTacosbot.Controllers
 {
@@ -13,13 +15,19 @@ namespace tesMexTacosbot.Controllers
     {
         public dynamic Post(AIResponse aiResponse)
         {
-            var response = new
-            {
-                fulfillmentText = "Hello Sumit",
-                ////Text = "Hello!!"
-            };
+            var commonModel = CommonModelMapper.DialogFlowToCommonModel(aiResponse);
+            if (commonModel == null)
+                return null;
+            commonModel = IntentRouter.Process(commonModel);
+            return CommonModelMapper.CommonModelToDialogFlow(commonModel);
+            ////var response = new
+            ////{
+               
+            ////    fulfillmentText = Handlers.WelcomeIntent.Process(new CommonModel()).Response.Text,
+            ////    ////Text = "Hello!!"
+            ////};
 
-            return response;
+            ////return response;
 
         }
 

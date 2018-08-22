@@ -32,6 +32,11 @@ namespace tesMexTacosbot.Helpers
                 CommonModel.Request.Intent = "DefaultWelcomeIntent";
             }
 
+            else if (requestType == typeof(LaunchRequest))
+            {
+                CommonModel.Request.Intent = "Default Welcome Intent";
+            }
+
             else if (requestType == typeof(SessionEndedRequest))
             {
 
@@ -72,7 +77,7 @@ namespace tesMexTacosbot.Helpers
             return new
             {
                 Speech = commonModel.Response.Text,
-                displayText = commonModel.Response.Text,
+                fulfillmentText = commonModel.Response.Text,
                 source = "tex Mex tacos"
 
             };

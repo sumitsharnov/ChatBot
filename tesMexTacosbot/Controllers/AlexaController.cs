@@ -1,4 +1,5 @@
 ﻿using Alexa.NET.Request;
+using Alexa.NET.Request.Type;
 using Alexa.NET.Response;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using tesMexTacosbot.Helpers;
+using tesMexTacosbot.Models.Common;
 
 namespace tesMexTacosbot.Controllers
 {
@@ -19,12 +22,18 @@ namespace tesMexTacosbot.Controllers
                 Response = new ResponseBody()
             };
 
-            response.Response.OutputSpeech = new PlainTextOutputSpeech()
+            var responseText = string.Empty;
+            var intentRequest = skillRequest.Request as IntentRequest;
+
+            var commonModel = CommonModelMapper.AlexaToCommonModel(skillRequest);
+            if (commonModel == null)
             {
-                Text = "Hello Sumit"
-            };
-            return response;
-        }
+                return null;
+            }
+
+            commonModel = IntentRouter.Process(commonModel);
+            return CommonModelMapper.CommonModelToAlexa(commonModel);
+        }  
         public string Get()
         {
             return "Hello Alexa!";
