@@ -17,7 +17,7 @@ namespace tesMexTacosbot
             IntentHandlers = new IntentList()
         {
             { "ReservationIntent", (cm) => Handlers.ReservationIntent.Process(cm) },
-        { "WelcomeIntent", (cm) => Handlers.WelcomeIntent.Process(cm)}
+        { "DefaultWelcomeIntent", (cm) => Handlers.WelcomeIntent.Process(cm)}
         };
             // Json settings
             config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
