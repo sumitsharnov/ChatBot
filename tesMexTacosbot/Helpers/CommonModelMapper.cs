@@ -24,6 +24,7 @@ namespace tesMexTacosbot.Helpers
             {
                 var intentRequest = skillRequest.Request as IntentRequest;
                 CommonModel.Request.Intent = intentRequest.Intent.Name;
+                if(intentRequest.Intent.Slots != null)
                 CommonModel.Request.Parameters = intentRequest.Intent.Slots.ToList().ConvertAll(s => new KeyValuePair<string, string>(s.Value.Name, s.Value.Value));
             }
 
